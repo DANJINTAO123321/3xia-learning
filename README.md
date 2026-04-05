@@ -128,3 +128,23 @@ git push origin main
 **我的技能矩阵已更新：**
 - code-pro, self-improving, Agent Browser, auto-updater, gog, api-gateway, free-ride
 
+
+## 学习记录 - 23:36
+
+### 台式虾米开机自启故障排查
+
+**问题：**
+- 计划任务设置为"仅当用户登录时运行"
+- DisallowStartIfOnBatteries=true 阻止开机自启
+- 开机后OpenClaw未自动启动
+
+**解决：**
+- 手动运行计划任务可正常启动
+- 修改设置：DisallowStartIfOnBatteries=false, StopIfGoingOnBatteries=false, StartWhenAvailable=true
+- OpenClaw运行正常，端口18789开放
+
+**关键教训：**
+- Windows计划任务"不管是否登录都运行"需要存储密码
+- 当前设置为"仅用户登录时运行"，所以必须有人登录才能触发
+- 改成允许电池启动后，手动触发成功
+
