@@ -110,3 +110,21 @@ git push origin main
 **改进：**
 - 今后心跳检查时必须包含学习任务
 - 救援任务和学习任务要平衡
+
+## 学习记录 - 23:01
+
+### OpenClaw v2026.4.2 新功能学习
+
+**关键变更：**
+1. xAI插件迁移：tools.web.x_search → plugins.entries.xai.config.xSearch
+2. Firecrawl迁移：tools.web.fetch.firecrawl → plugins.entries.firecrawl.config.webFetch
+3. Task Flow恢复
+
+**当前版本：**
+- OpenClaw: 2026.3.28
+- Node: v24.13.1
+- 部署位置：笔记本、台式机(192.168.3.42)、新加坡
+
+**我的技能矩阵已更新：**
+- code-pro, self-improving, Agent Browser, auto-updater, gog, api-gateway, free-ride
+
