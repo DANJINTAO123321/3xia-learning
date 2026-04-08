@@ -44,11 +44,24 @@ cd 3xia-learning/autonomous_team
 python3 autonomous_loop.py
 ```
 
-### 4. 设置定时任务（推荐）
+### 4. 设置定时任务（推荐每30分钟轮回一次）
+为避免多个虾米同时抢任务，用sleep错开执行时间：
+
 ```bash
-# 每小时自动运行一次
-*/60 * * * * cd /path/to/autonomous_team && python3 autonomous_loop.py >> logs/cron.log 2>&1
+# 本地虾米（shrimp_2）：每30分钟的第10秒执行
+*/30 * * * * cd /path/to/3xia-learning && sleep 10 && python3 autonomous_team/autonomous_loop.py >> autonomous_team/logs/cron.log 2>&1
+
+# 笔记本虾米（shrimp_1）：每30分钟的第20秒执行
+*/30 * * * * cd /path/to/3xia-learning && sleep 20 && python3 autonomous_team/autonomous_loop.py >> autonomous_team/logs/cron.log 2>&1
+
+# 新加坡虾米（shrimp_3）：每30分钟的第30秒执行
+*/30 * * * * cd /path/to/3xia-learning && sleep 30 && python3 autonomous_team/autonomous_loop.py >> autonomous_team/logs/cron.log 2>&1
 ```
+
+### 5. 任务轮回规则
+- 每个虾米每个轮回（30分钟）最多领取 **3个任务**
+- 任务完成后自动保存学习成果到 knowledge/ 目录
+- 所有变更自动git push到仓库同步
 
 ## 任务格式
 

@@ -74,7 +74,10 @@ def git_push():
     """推送代码"""
     log("📤 推送代码...")
     repo_path = LOCAL_REPO_PATH or os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    code, out, err = run_cmd(f"git add {TASKS_DIR} {KNOWLEDGE_DIR} && git commit -m '[{SHRIMP_ID}] 自动提交: {datetime.now().strftime(\"%Y-%m-%d %H:%M\")}' && git push origin {GIT_BRANCH}", cwd=repo_path)
+    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M")
+    commit_msg = f'[{SHRIMP_ID}] 自动提交: {timestamp}'
+    cmd = f'git add {TASKS_DIR} {KNOWLEDGE_DIR} && git commit -m "{commit_msg}" && git push origin {GIT_BRANCH}'
+    code, out, err = run_cmd(cmd, cwd=repo_path)
     if code == 0:
         log("✅ 推送成功")
     else:
