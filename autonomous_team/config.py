@@ -1,10 +1,15 @@
 #!/usr/bin/env python3
 """
 三虾自主协作系统 - 配置
+
+正确ID对应：
+- shrimp_1 = 笔记本虾米（代码猎手）
+- shrimp_2 = 本地虾米（工程师）
+- shrimp_3 = 新加坡虾米（总经理）
 """
 
 # ============ 虾米身份配置 ============
-SHRIMP_ID = "shrimp_2"  # shrimp_1=新加坡, shrimp_2=本地, shrimp_3=笔记本
+SHRIMP_ID = "shrimp_2"  # 根据你的身份修改！
 SHRIMP_NAME = "本地虾米"
 SHRIMP_ROLE = "工程师"  # 总经理/代码猎手/工程师
 
