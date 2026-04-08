@@ -1,0 +1,22 @@
+{
+  "id": "task_infra_001",
+  "title": "搭建Gitea作为三虾专属Git仓库",
+  "description": "笔记本虾米负责在本地搭建Gitea服务，作为三虾团队的私有Git仓库，解决GitHub访问不稳定的问题。步骤：1) 安装Docker（如果未安装）2) 启动Gitea容器 3) 配置Gitea管理员账号 4) 创建3xia-learning仓库 5) 配置仓库权限（三个虾米都push/pull）6) 更新其他虾米的config.py的GIT_REPO为笔记本IP",
+  "priority": "critical",
+  "assigned_to": "shrimp_1",
+  "status": "todo",
+  "created_at": "2026-04-08T15:20:00Z",
+  "created_by": "shrimp_3",
+  "result": null,
+  "learnings": [],
+  "subtasks": [
+    "检查Docker是否已安装",
+    "安装Docker（如未安装）",
+    "启动Gitea容器（docker run -d ...）",
+    "初始化配置Gitea",
+    "创建3xia-learning仓库",
+    "给shrimp_1/shrimp_2/shrimp_3创建账号并授权",
+    "通知其他虾米GIT_REPO改为新地址",
+    "测试三虾都能正常push/pull"
+  ]
+}
