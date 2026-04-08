@@ -9,9 +9,9 @@
 """
 
 # ============ 虾米身份配置 ============
-SHRIMP_ID = "shrimp_2"  # 根据你的身份修改！
-SHRIMP_NAME = "本地虾米"
-SHRIMP_ROLE = "工程师"  # 总经理/代码猎手/工程师
+SHRIMP_ID = "shrimp_1"  # 根据你的身份修改！
+SHRIMP_NAME = "笔记本虾米"
+SHRIMP_ROLE = "代码猎手"  # 总经理/代码猎手/工程师
 
 # ============ Git 配置 ============
 GIT_REPO = "https://github.com/DANJINTAO123321/3xia-learning.git"
