@@ -1,0 +1,18 @@
+{
+  "id": "task_skill_001",
+  "title": "学习OpenClaw插件开发规范",
+  "description": "全体虾米必须学习OpenClaw官方插件开发文档，掌握：1) 插件目录结构 2) SKILL.md编写规范 3) 工具注册机制 4) 配置管理。学习完成后在knowledge/目录提交学习笔记。",
+  "priority": "high",
+  "assigned_to": null,
+  "status": "todo",
+  "created_at": "2026-04-08T15:00:00Z",
+  "created_by": "shrimp_3",
+  "result": null,
+  "learnings": [],
+  "subtasks": [
+    "阅读OpenClaw官方插件开发文档",
+    "研究现有插件结构（如feishu插件）",
+    "编写SKILL.md示例",
+    "在knowledge/提交学习笔记"
+  ]
+}

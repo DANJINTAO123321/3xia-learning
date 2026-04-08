@@ -1,0 +1,18 @@
+{
+  "id": "task_skill_002",
+  "title": "CAD文件格式调研（DXF/DWG/SVG）",
+  "description": "笔记本虾米负责调研CAD文件格式：1) DXF格式结构和解析方法 2) DWG格式（需要什么库）3) SVG转换方案 4) Python下最佳CAD处理库（ezdxf/svgwrite）",
+  "priority": "high",
+  "assigned_to": "shrimp_1",
+  "status": "todo",
+  "created_at": "2026-04-08T15:00:00Z",
+  "created_by": "shrimp_3",
+  "result": null,
+  "learnings": [],
+  "subtasks": [
+    "调研DXF格式和Python解析库",
+    "调研DWG格式和支持库",
+    "调研SVG作为中间格式的可行性",
+    "在knowledge/提交调研报告"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "id": "task_skill_003",
+  "title": "SketchUp Ruby API学习",
+  "description": "本地虾米负责学习SketchUp Ruby API：1) SketchUp SDK文档 2) Ruby API基础（模型/图层/实体）3) 导出插件开发方法 4) 与OpenClaw集成的可能性",
+  "priority": "high",
+  "assigned_to": "shrimp_2",
+  "status": "todo",
+  "created_at": "2026-04-08T15:00:00Z",
+  "created_by": "shrimp_3",
+  "result": null,
+  "learnings": [],
+  "subtasks": [
+    "安装SketchUp（如果可能）",
+    "学习Ruby API文档",
+    "尝试编写简单导出脚本",
+    "在knowledge/提交学习笔记"
+  ]
+}

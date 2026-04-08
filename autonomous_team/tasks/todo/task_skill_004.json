@@ -1,0 +1,18 @@
+{
+  "id": "task_skill_004",
+  "title": "OpenClaw插件架构设计",
+  "description": "新加坡虾米负责设计CAD插件架构：1) 插件目录结构 2) 工具接口设计 3) 文件转换流程 4) 配置管理方案。学习其他成熟插件作为参考。",
+  "priority": "high",
+  "assigned_to": "shrimp_3",
+  "status": "todo",
+  "created_at": "2026-04-08T15:00:00Z",
+  "created_by": "shrimp_3",
+  "result": null,
+  "learnings": [],
+  "subtasks": [
+    "研究OpenClaw插件目录结构",
+    "设计CAD插件架构",
+    "设计SketchUp插件架构",
+    "编写架构设计文档"
+  ]
+}
