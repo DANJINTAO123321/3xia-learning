@@ -1,67 +1,92 @@
 # 🦐 三虾自主协作系统
 
-## 概述
+> 让三个AI虾米像团队一样自主协作、学习和进化
 
-三个虾米（AI助手）组成的自主协作团队，自动化处理任务、学习和知识同步。
+## 快速开始
+
+### 1. 克隆仓库
+```bash
+git clone https://github.com/DANJINTAO123321/3xia-learning.git
+cd 3xia-learning
+```
+
+### 2. 配置你的身份
+编辑 `autonomous_team/config.py`：
+
+```python
+SHRIMP_ID = "shrimp_2"  # shrimp_1=笔记本, shrimp_2=本地, shrimp_3=新加坡
+SHRIMP_NAME = "本地虾米"
+SHRIMP_ROLE = "工程师"
+```
+
+### 3. 运行主循环
+```bash
+python3 autonomous_team/autonomous_loop.py
+```
+
+### 4. 设置定时任务（每30分钟轮回）
+```bash
+# 本地虾米（shrimp_2）
+*/30 * * * * cd /root/3xia-learning && sleep 20 && python3 autonomous_team/autonomous_loop.py >> autonomous_team/logs/cron.log 2>&1
+
+# 笔记本虾米（shrimp_1）
+*/30 * * * * cd /home/linglong/3xia-learning && sleep 10 && python3 autonomous_team/autonomous_loop.py >> autonomous_team/logs/cron.log 2>&1
+
+# 新加坡虾米（shrimp_3）
+*/30 * * * * cd /root/3xia-learning && sleep 30 && python3 autonomous_team/autonomous_loop.py >> autonomous_team/logs/cron.log 2>&1
+```
 
 ## 团队分工
 
-| 虾米 | 角色 | 职责 | 活跃时间 |
-|------|------|------|----------|
-| 新加坡虾米 | 总经理 | 任务分配、监督、决策 | 22:00-06:00 |
-| 笔记本虾米 | 代码猎手 | 技术调研、探索、预研 | 14:00-22:00 |
-| 本地虾米 | 工程师 | 开发、实现、交付 | 06:00-14:00 |
+| ID | 虾米 | 角色 | 值班时间 |
+|----|------|------|----------|
+| shrimp_3 | 新加坡虾米 | 总经理 | 22:00-06:00 |
+| shrimp_1 | 笔记本虾米 | 代码猎手 | 14:00-22:00 |
+| shrimp_2 | 本地虾米 | 工程师 | 06:00-14:00 |
+
+## 完整协作流程
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                      任务生命周期                             │
+│                                                             │
+│  创建 ──▶ 分配 ──▶ 领取 ──▶ 执行 ──▶ 提交 ──▶ 审核 ──▶ 完成  │
+│  (todo)     (todo)   (doing)  (doing)  (done)   (review)  (closed) │
+└─────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────┐
+│                      轮回执行流程                             │
+│                                                             │
+│  1. git pull 拉取最新                                       │
+│  2. 检查自己的doing任务，继续执行                            │
+│  3. 总经理审核done任务（只有shrimp_3执行）                   │
+│  4. 领取新任务（最多3个/轮回）                               │
+│  5. 执行并提交审核                                          │
+│  6. 同步知识库                                              │
+│  7. git push 推送                                           │
+└─────────────────────────────────────────────────────────────┘
+```
 
 ## 目录结构
 
 ```
 autonomous_team/
-├── autonomous_loop.py      # 主循环程序
-├── task_pool.py           # 任务池管理
+├── README.md              # 本文件
+├── RULES.md               # 完整规则文档（重要！）
+├── config.py              # 身份配置
+├── autonomous_loop.py     # 主循环
+├── task_pool.py           # 任务池
 ├── knowledge_sync.py      # 知识同步
-├── config.py              # 配置
-├── tasks/                 # 任务目录
-│   ├── pending/           # 待领取
-│   ├── in_progress/       # 进行中
-│   └── done/              # 已完成
-├── knowledge/            # 共享知识库
-└── logs/                 # 日志
+│
+├── tasks/
+│   ├── todo/             # 待领取/待分配
+│   ├── doing/             # 进行中
+│   ├── done/              # 已完成待审核
+│   └── closed/            # 已关闭（审核通过）
+│
+├── knowledge/             # 知识库
+└── logs/                  # 日志
 ```
-
-## 使用方法
-
-### 1. 克隆仓库
-```bash
-git clone https://github.com/DANJINTAO123321/3xia-learning.git
-cd 3xia-learning/autonomous_team
-```
-
-### 2. 配置
-编辑 `config.py`，设置你的虾米ID和Git信息。
-
-### 3. 运行主循环
-```bash
-python3 autonomous_loop.py
-```
-
-### 4. 设置定时任务（推荐每30分钟轮回一次）
-为避免多个虾米同时抢任务，用sleep错开执行时间：
-
-```bash
-# 本地虾米（shrimp_2）：每30分钟的第10秒执行
-*/30 * * * * cd /path/to/3xia-learning && sleep 10 && python3 autonomous_team/autonomous_loop.py >> autonomous_team/logs/cron.log 2>&1
-
-# 笔记本虾米（shrimp_1）：每30分钟的第20秒执行
-*/30 * * * * cd /path/to/3xia-learning && sleep 20 && python3 autonomous_team/autonomous_loop.py >> autonomous_team/logs/cron.log 2>&1
-
-# 新加坡虾米（shrimp_3）：每30分钟的第30秒执行
-*/30 * * * * cd /path/to/3xia-learning && sleep 30 && python3 autonomous_team/autonomous_loop.py >> autonomous_team/logs/cron.log 2>&1
-```
-
-### 5. 任务轮回规则
-- 每个虾米每个轮回（30分钟）最多领取 **3个任务**
-- 任务完成后自动保存学习成果到 knowledge/ 目录
-- 所有变更自动git push到仓库同步
 
 ## 任务格式
 
@@ -69,41 +94,30 @@ python3 autonomous_loop.py
 {
   "id": "task_001",
   "title": "任务标题",
-  "description": "任务描述",
+  "description": "详细描述",
   "priority": "high|medium|low",
-  "assigned_to": "shrimp_1|shrimp_2|shrimp_3",
-  "status": "pending|in_progress|done",
+  "assigned_to": "shrimp_X|null",
+  "status": "todo|doing|done|closed",
   "created_at": "2026-04-08T00:00:00Z",
-  "completed_at": null,
-  "result": null,
-  "learnings": []
+  "created_by": "shrimp_X",
+  "result": { ... },
+  "learnings": ["学到的内容"],
+  "subtasks": []
 }
 ```
 
-## 知识库格式
+## 核心规则
 
-```markdown
-# 知识标题
+1. **轮回时间**：每30分钟一次
+2. **错峰执行**：用sleep错开避免抢任务
+3. **任务审核**：总经理（shrimp_3）负责审核其他虾米完成的任务
+4. **知识同步**：每个任务完成后必须同步学习成果到knowledge/
+5. **最多领取**：每轮回最多3个任务
 
-## 关键点
-- 要点1
-- 要点2
+## 详细规则
 
-## 应用场景
-- 场景1
-- 场景2
-
-## 学到的经验
-- 经验1
-```
-
-## 设计原则
-
-1. **自主循环** - 领取→执行→提交→继续
-2. **知识共享** - 每个虾米学到的都同步
-3. **无需人工干预** - 自动化全流程
-4. **可追溯** - 所有变更都有git记录
+请阅读 [RULES.md](RULES.md) 了解完整的协作规则！
 
 ---
 
-🦐 三虾协作，自主进化！
+🦐 **三虾协作，自主进化！**
